@@ -1,0 +1,726 @@
+:root {
+  /* Paleta Biofílica: Olive, Walnut, Ivory */
+  --bg-color: #F7F5F0; /* Ivory suave */
+  --bg-secondary: #EBE6DF; /* Ivory levemente mais escuro para seções */
+  
+  --text-primary: #3C2F2F; /* Walnut escuro para texto */
+  --text-secondary: #5C4A3D; /* Walnut médio para subtítulos */
+  
+  --accent: #6B705C; /* Olive (Verde Oliva suave) */
+  --accent-dark: #4A5320; /* Olive mais escuro para hover */
+  --accent-light: #A5A58D; /* Sage / Olive muito claro */
+  
+  --white: #ffffff;
+  --glass-bg: rgba(247, 245, 240, 0.85);
+  --glass-border: rgba(107, 112, 92, 0.15);
+  
+  /* Sombras elegantes */
+  --shadow-sm: 0 4px 6px -1px rgba(60, 47, 47, 0.05), 0 2px 4px -1px rgba(60, 47, 47, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(60, 47, 47, 0.05), 0 4px 6px -2px rgba(60, 47, 47, 0.025);
+  --shadow-lg: 0 20px 25px -5px rgba(60, 47, 47, 0.05), 0 10px 10px -5px rgba(60, 47, 47, 0.02);
+  
+  /* Espaçamentos e Fontes */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  --radius: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ================== Navbar ================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  z-index: 1000;
+  transition: padding 0.3s ease;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.btn-contato {
+  background-color: var(--text-primary);
+  color: var(--bg-color) !important;
+  padding: 8px 20px;
+  border-radius: 20px;
+}
+
+.btn-contato:hover {
+  background-color: var(--text-secondary);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mobile-menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-primary);
+  transition: 0.3s;
+}
+
+/* ================== Botões ================== */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--white);
+  box-shadow: 0 4px 14px rgba(107, 112, 92, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 112, 92, 0.4);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(60, 47, 47, 0.05);
+}
+
+.btn-outline {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 10px 24px;
+}
+
+.btn-outline:hover {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+/* ================== Hero Section ================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/bg_farmhouse.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.12; /* Ajustado para ficar bem mais transparente e melhorar legibilidade */
+  z-index: -2;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  width: 100%;
+  z-index: 1;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-text .subtitle {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.hero-text .description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+}
+
+.hero-image-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image-backdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.hero-image-mask {
+  width: 400px;
+  height: 500px;
+  border-radius: 200px 200px 0 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  background: linear-gradient(to top, rgba(107, 112, 92, 0.2), transparent);
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: luminosity; /* Mantém B&W mas adere ao tom do fundo */
+  opacity: 0.95;
+  transition: all 0.5s ease;
+}
+
+.hero-image-mask:hover .profile-img {
+  transform: scale(1.03);
+  mix-blend-mode: normal; /* Revela cor original (se tiver) ou apenas remove o efeito */
+}
+
+/* ================== Sobre Mim ================== */
+.sobre {
+  padding: 100px 0;
+  background-color: var(--bg-secondary);
+}
+
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.sobre-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 24px;
+}
+
+.sobre-text .quote {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-style: italic;
+  margin-bottom: 24px;
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+}
+
+.sobre-text p {
+  margin-bottom: 16px;
+  color: var(--text-secondary);
+}
+
+.sobre-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.stat-card {
+  background: var(--bg-color);
+  padding: 30px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-img {
+  width: 100%;
+  height: 180px; /* Maior, conforme pedido */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.stat-img-logo {
+  object-fit: contain;
+  mix-blend-mode: multiply; /* Remove o fundo branco integrando-o ao fundo ivory */
+}
+
+.stat-text-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.stat-text-flex h3 {
+  font-size: 4rem;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.stat-text-flex p {
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.stat-subtitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ================== Livros ================== */
+.livros {
+  padding: 100px 0;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.book-card {
+  display: flex;
+  gap: 30px;
+  background: var(--bg-secondary);
+  padding: 40px;
+  border-radius: var(--radius);
+  align-items: center;
+}
+
+/* CSS 3D Book Mockup */
+.book-3d-wrapper {
+  perspective: 1000px;
+  width: 160px;
+  height: 240px;
+  flex-shrink: 0;
+}
+
+.book-3d {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(-20deg) rotateX(10deg);
+  transition: transform 0.5s ease;
+  box-shadow: 15px 15px 25px rgba(0,0,0,0.1);
+}
+
+.book-3d:hover {
+  transform: rotateY(-5deg) rotateX(5deg) translateZ(20px);
+  box-shadow: 5px 15px 35px rgba(0,0,0,0.15);
+}
+
+.book-3d img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill; /* Força o preenchimento exato da caixa sem bordas */
+  border-radius: 2px 5px 5px 2px;
+  position: absolute;
+}
+
+/* Criar lombada falsa usando pseudo-elemento */
+.book-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 100%;
+  background-color: var(--text-secondary); /* Cor de fundo sólida para a lombada! Remove a borda estranha escura */
+  background-image: linear-gradient(to right, rgba(255,255,255,0.4), rgba(255,255,255,0.1) 3px, transparent 4px, rgba(0,0,0,0.2) 23px, rgba(0,0,0,0.4));
+  transform-origin: left;
+  transform: rotateY(90deg);
+  border-radius: 3px 0 0 3px;
+}
+
+/* Páginas (lado direito do livro) */
+.book-3d::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 0;
+  width: 25px;
+  height: calc(100% - 4px);
+  background: repeating-linear-gradient(to right, #f4f4f4, #f4f4f4 1px, #e8e8e8 2px);
+  transform-origin: right;
+  transform: rotateY(-90deg);
+  border-radius: 0 3px 3px 0;
+}
+
+
+.book-info {
+  flex: 1;
+}
+
+.book-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--glass-border);
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: var(--accent-dark);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.book-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.book-excerpt {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+/* ================== Cursos ================== */
+.cursos {
+  padding: 100px 0;
+  background-color: var(--text-primary);
+  color: var(--bg-color);
+}
+
+.cursos .section-header h2 {
+  color: var(--bg-color);
+}
+
+.cursos .section-header p {
+  color: var(--accent-light);
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.course-card {
+  background-color: var(--text-secondary);
+  padding: 40px 30px;
+  border-radius: var(--radius);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: block;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  background-color: #6a5547;
+}
+
+.course-content h3 {
+  color: var(--bg-color);
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.course-content p {
+  color: #d1c8c0;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  min-height: 80px;
+}
+
+.course-link {
+  color: var(--accent-light);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: padding 0.3s ease;
+}
+
+.course-card:hover .course-link {
+  padding-left: 8px;
+}
+
+/* ================== Footer & Contato ================== */
+.footer {
+  padding: 80px 0 40px;
+  background-color: var(--bg-secondary);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.footer-brand h2 {
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.footer-signature {
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 5px;
+  opacity: 0.9;
+  display: block;
+}
+
+.footer-brand p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.footer h3 {
+  font-size: 1.1rem;
+  font-family: var(--font-sans);
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-icon-list li {
+  margin-bottom: 14px;
+}
+
+.footer-icon-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.footer-icon-list a i {
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.footer-links a:hover {
+  color: var(--accent-dark);
+}
+
+.email-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-dark);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.email-link i {
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ================== Responsivo ================== */
+@media (max-width: 992px) {
+  .hero-content, .sobre-grid, .books-grid {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-text {
+    text-align: center;
+  }
+  
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--glass-bg);
+    flex-direction: column;
+    padding: 20px 0;
+    box-shadow: var(--shadow-md);
+    clip-path: circle(0% at 100% 0);
+    transition: clip-path 0.4s ease-out;
+  }
+  
+  .nav-links.active {
+    clip-path: circle(150% at 100% 0);
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .courses-grid, .footer-content {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  
+  .book-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .book-3d-wrapper {
+    margin: 0 auto 20px;
+  }
+}
